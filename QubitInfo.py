@@ -142,9 +142,10 @@ def random_point():
             print(k[0], "rho0 = ", rho0, "rho1 = ", rho1)
             plot(rho0, rho1, ang, P0, k)
             break
+        # for finding multi maxima in the derivative curve     
         # if k[3] != 1:
         #     print("Maxima(s) of I: ", k[0], "rho0 = ", rho0, "rho1 = ", rho1, "derMaxima = ", k[3], P0)
         #     plot(rho0, rho1, ang, P0, k)
         #     break
 
-
+random_point()
