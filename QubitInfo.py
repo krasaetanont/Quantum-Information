@@ -149,7 +149,7 @@ while (True):
         # # Graph 1: I and the derivative
         ax1.plot(k[1], k[2], label='Mutual Information I')
         ax1.plot(k[1], k[4], color="r", label='Derivative of I')
-        ax1.set_title(f"P0 = {round(P0, 3)}, peak = {k[5]}")
+        ax1.set_title(f"P0 = {round(P0, 3)}, angmax = {k[5]}")
         # ax1.legend(loc='upper right')
 
         # # Graph 2: Sampling point of rho and initial angle
