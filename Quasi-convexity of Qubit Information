@@ -164,7 +164,3 @@ while (True):
         plt.show()
         break
 
-# Krasaetanont, Muhammad Nafiz Nazhan, hereby disclaims all copyright interest in the program “Quasi-convexity of Qubit Information” (which proves the Keil's conjecture) written by Wachirawit Krasaetanont, Muhammad Nafiz Nazhan.
-#
-# signature of Wachirawit Krasaetanont 5 September 2024
-# Wachirawit Krasaetanont, NIT Akashi College Student
