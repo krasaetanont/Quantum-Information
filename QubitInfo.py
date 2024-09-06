@@ -9,7 +9,7 @@ import numpy as np
 import math as mt
 import matplotlib.pyplot as plt
 import random as rd
-import multiprocessing
+from multiprocessing import Process
 
 rho0 = np.array([0, 0])
 rhoBase = np.array([1, 0])  # Base Rho
@@ -61,7 +61,7 @@ def mutual_info(P0, P1, rho0, rho1, ang):  # Function to find mutual information
             peak = round(x[j], 3)
     z = np.append(z, [0])
 
-    print(f"Maxima(s) of I: {maxima}, Maxima(s) of derivative of I: {derMaxima} | rho0 = {rho0}, rho1 = {rho1}")
+    # print(f"Maxima(s) of I: {maxima}, Maxima(s) of derivative of I: {derMaxima} | rho0 = {rho0}, rho1 = {rho1}")
     # plot(rho0, rho1, ang, P0, [maxima, x, y, derMaxima, z, peak])
     return [maxima, x, y, derMaxima, z, peak]
 
@@ -117,9 +117,9 @@ def plot(rho0, rho1, ang, P0, k):
 
 
 # Set a random two point
-def random_point():
+def random_point(n):
     count = 0
-    while (count < 100000):
+    while (count < n):
         count+= 1
 
         length0 = np.sqrt(np.random.uniform(0, 1))
@@ -142,10 +142,23 @@ def random_point():
             print(k[0], "rho0 = ", rho0, "rho1 = ", rho1)
             plot(rho0, rho1, ang, P0, k)
             break
-        # for finding multi maxima in the derivative curve     
+        # find maxima for the derivative of Mutual Information function
         # if k[3] != 1:
         #     print("Maxima(s) of I: ", k[0], "rho0 = ", rho0, "rho1 = ", rho1, "derMaxima = ", k[3], P0)
         #     plot(rho0, rho1, ang, P0, k)
         #     break
 
-random_point()
+
+def runInParallel(nproc, num): # to run using multiple processor
+  proc = []
+  for n in range(nproc):
+    p = Process(target=random_point, args=(num,))
+    p.start()
+    proc.append(p)
+  for p in proc:
+    p.join()
+
+
+if __name__ == "__main__":
+    runInParallel(11, 100) # first argument = number of processor, second argument = number of loop
+
